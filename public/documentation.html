@@ -1,14 +1,109 @@
-<!<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-  <head></head>
-  <body>
-    <header>
-      <p>Movie Index API</p>
-    </header>
-    <div>
-      The web application will provide users with access to information about different movies, directors, and genres. Users
-      will be able to sign up, update their personal information, and create a list of their favorite
-      movies.
-    </div>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Documentation</title>
+</head>
+
+<body>
+  <header>
+    <h1>myFlix Project</h1>
+    <h2>Create a REST API with Node.js</h2>
+  </header>
+  <div>
+    <h3>Objective:</h3>
+    <p>To build the server-side component of a "movies" web application.</p>
+    <p>The web application will provide users with access to information about different
+      movies, directors, and genres.</p>
+    <p>Users will be able to sign up, update their personal information, and
+      create a list of their favorite movies.</p>
+  </div>
+  <div>
+    <table>
+      <tr>
+        <th>Business Logic</th>
+        <th>URL Endpoint</th>
+        <th>HTTP Method</th>
+        <th>Request Body</th>
+        <th>Request Example</th>
+        <th>Response Body</th>
+      </tr>
+      <tr>
+        <td>Get a list of all movies</td>
+        <td>/movies</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>/movies</td>
+        <td>JSON
+      </tr>
+      <tr>
+        <td>Get information about one specific movie by title (use %20 for spaces)</td>
+        <td>/movies/:title</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>/movies/Ace%20Ventura
+        <td>JSON</td>
+      <tr>
+        <td>Return data about genre(description) by name/title (use %20 for spaces)</td>
+        <td>/movies/genres/:genre</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>/movies/genres/comedy</td>
+        <td>JSON</td>
+      </tr>
+      <tr>
+        <td>Return data about a director by name (use %20 for spaces)</td>
+        <td>/movies/directors/:name</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>/movies/directors/Christopher%20Nolan</td>
+        <td>JSON</td>
+      </tr>
+      <tr>
+        <td>Allow new users to register</td>
+        <td>/users</td>
+        <td>POST</td>
+        <td>JSON</td>
+        <td>{<br>Username: "trevorallen",<br> Password: "passw0rd",<br>Email: "trevorallen@gmail.com",<br>Date of Birth: "04/26/1990"<br>}</td>
+        <td>JSON</td>
+      </tr>
+      <tr>
+        <td>Allow users to update their user information</td>
+        <td>/users/:username</td>
+        <td>PUT</td>
+        <td>JSON</td>
+        <td>{<br>Username: "trevorallen",<br> Password: "NEWpassw0rd",<br>Email: "trevorallen@gmail.com",<br>Date of Birth: "04/26/1990"<br>}</td>
+        <td>JSON</td>
+      </tr>
+      <tr>
+        <td>Allow users to add a movie to their list of favorites</td>
+        <td>/users/:username/movies/:movieID</td>
+        <td>POST</td>
+        <td>JSON</td>
+        <td>{<br>FavoriteMovies: "123456"<br>}</td>
+        <td>JSON</td>
+      </tr>
+      <tr>
+        <td>Allow users to remove a movie from their list of favorites</td>
+        <td>/users/:username/movies/:movieID</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>/users/trevorallen/movies/654321</td>
+        <td>Message
+      </tr>
+      <tr>
+        <td>Allow existing users to deregister</td>
+        <td>/users/:username</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>/users/trevorallen</td>
+        <td>Message</td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+
 </html>
