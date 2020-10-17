@@ -1,6 +1,14 @@
 const express = require('express'),
   morgan = require('morgan');
 
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true});
+
 const app = express();
 
 let topMovies = [
@@ -74,38 +82,120 @@ app.get('/movies/:title', (req, res) => {
 });
 
 // This shows information about a specific genre(description) by name/title
-app.get('/movies/genres/genre', (req, res) => {
+app.get('/movies/genres/:genre', (req, res) => {
   res.send('This is where we will show more information about a specific genre');
 });
 
 // This shows information about a specific director by name
-app.get('/movies/Directors/director', (req, res) => {
+app.get('/movies/directors/:director', (req, res) => {
   res.send('This is where we will show more information about a specific Director');
 });
 
 // Registers a new user
 app.post('/users', (req, res) => {
-  res.send('This is where a new user will be able to register');
+  Users.findOne({ Username: req.body.Username }) //This queries the "Users" model using mongoose
+    .then((user) => {
+      if (user) {
+        return res.status(400).send(req.body.Username = 'already exists'); //This returns the 'already exists' message if that username already exists
+      } else {
+        Users.create({ //This section creates a new user profile based on the query and adds it to the Mongo Database
+            Username: req.body.Username,
+            Password: req.body.Password,
+            Email: req.body.Email,
+            Birthday: req.body.Birthday
+          })
+          .then((user) => {res.status(201).json(user) }) //This sends the new user info back as a response in JSON format
+        .catch((error) => { //This section catches any errors and sends back a message with an error code of '500'
+          console.error(error);
+          res.status(500).send('Error: ' + error);
+        })
+      }
+    })
+    .catch((error) => { //This section catches any errors and sends back a message with an error code of '500'
+      console.error(error);
+      res.status(500).send('Error: ' + error);
+    });
+});
+
+// This shows more info about a specific user based on the username in the query
+app.get('/users/:Username', (req, res) => {
+  Users.findOne({Username: req.params.Username}) //This finds a user by their username that they put in the request
+  .then((user) => {
+    res.json(user); //This returns their info in JSON format
+  })
+  .catch((err) => { //This section catches any errors and sends back a message with an error code of '500'
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
 });
 
 // This allows the user to update their info
-app.put('/users/username', (req, res) => {
-  res.send('This is where the user will be able to update their information');
+app.put('/users/:Username', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username},{ $set: //This section finds a user in the database by name and updates their info
+    {
+      Username: req.body.Username,
+      Password: req.body.Password,
+      Email: req.body.Email,
+      Birthday: req.body.Birthday
+    }
+  },
+  {new: true}, //This line makes sure the updated document is returned
+  (err, updatedUser) => {
+    if (err){ //This will show an error if there is one
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } else {
+      res.json(updatedUser); //this returns the JSON of the updated user info
+    }
+  });
 });
 
 // This allows the user to add a movie to their list
-app.post('/users/username/movies/movieID', (req, res) => {
-  res.send('This is where users can add a movie to their list of favorites');
+app.post('/users/:Username/movies/:MovieID', (req, res) => {
+  Users.findOneAndUpdate({Username: req.params.Username}, { //This finds a user by name
+    $push: {FavoriteMovies: req.params.MovieID} //This "pushes" a new favorite movie to their favorite movie list
+  },
+  {new: true}, //This line makes sure that the updated document is returned
+  (err, updatedUser) => {
+    if (err) { //This checks for errors
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } else {
+      res.json(updatedUser); //If there's no errors, this will return the updated info for the user in JSON format
+    }
+  });
 });
 
 // This allows the user to delete a movie from their list
-app.delete('/users/username/movies/movieID', (req, res) => {
-  res.send('This is where users will be able to delete a movie from their list');
+app.delete('/users/:Username/movies/:MovieID', (req, res) => {
+  Users.findOneAndUpdate({Username: req.params.Username}, { //This finds a user by name
+    $pull: {FavoriteMovies: req.params.MovieID} //This "pulls" a favorite movie from their favorite movie list
+  },
+  {new: true}, //This line makes sure that the updated document is returned
+  (err, updatedUser) => {
+    if (err) { //This checks for errors
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    } else {
+      res.json(updatedUser); //If there's no errors, this will return the updated info for the user in JSON format
+    }
+  });
 });
 
 // This deregisters the user
-app.delete('/users/username', (req, res) => {
-  res.send('This is where users will be able to deregister');
+app.delete('/users/:Username', (req, res) => {
+  Users.findOneAndRemove({Username: req.params.Username}) //This finds the user by username and removes them from the user group
+    .then((user) =>{
+      if (!user) {
+        res.status(400).send(req.params.Username + ' was not found'); //If the username couldn't be found it'll send this error
+      } else {
+        res.status(500).send(req.params.Username + ' was deleted.'); //If the username was found it'll send this message
+      }
+    })
+    .catch((err) => { //This catches errors
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 // listen for requests
