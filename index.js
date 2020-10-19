@@ -1,62 +1,30 @@
+// Imports all the appropriate modules for the API
 const express = require('express'),
-  morgan = require('morgan');
+  morgan = require('morgan'),
+  bodyParser = require('body-parser'),
+  uuid = require('uuid');
 
+// Imports the appropriate object models from Mongoose
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-
 const Movies = Models.Movie;
 const Users = Models.User;
+const Genres = Models.Genre;
+const Directors = Models.Director;
 
+//Connects the MongoDB database for use here
 mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true});
 
+//Allows the use of express
 const app = express();
 
-let topMovies = [
-  {
-    title: 'Ace Ventura: Pet Detective',
-    leadActor: 'Jim Carrey'
-  },
-  {
-    title: 'Nacho Libre',
-    leadActor: 'Jack Black'
-  },
-  {
-    title: 'Kung Pow: Enter the Fist',
-    leadActor: 'Steve Oedekirk'
-  },
-  {
-    title: 'Hot Rod',
-    leadActor: 'Andy Samberg'
-  },
-  {
-    title: 'Zombieland',
-    leadActor: 'Jesse Eisenberg'
-  },
-  {
-    title: 'Scott Pilgrim vs. the World',
-    leadActor: 'Michael Cera'
-  },
-  {
-    title: 'Thor: Ragnarok',
-    leadActor: 'Chris Hemsworth'
-  },
-  {
-    title: 'Ford vs. Ferrari',
-    leadActor: 'Matt Damon'
-  },
-  {
-    title: 'The Dark Knight',
-    leadActor: 'Christian Bale'
-  },
-  {
-    title: 'Inception',
-    leadActor: 'Leonardo DiCaprio'
-  }
-];
+app.use(bodyParser.json());
 
-app.use(morgan('common')); //When the user enters a url into the browser this logs a timestamp and the pathName to the console
+//When the user enters a url into the browser this logs a timestamp and the pathName to the console/terminal
+app.use(morgan('common'));
 
-app.use('/documentation', express.static('public')); //This should serve the "documentation.html" file to the browser
+ //This should serve the "documentation.html" file to the browser
+app.use('/documentation', express.static('public'));
 
 app.use((err, req, res, next) => { //This is the error handling function
   console.error(err.stack);
@@ -72,23 +40,63 @@ app.get('/', (req, res) => {
 
 // This shows a list of all the movie objects
 app.get('/movies', (req, res) => {
-  res.json(topMovies)
+  Movies.find()
+    .then((movies) => {
+      res.status(201).json(movies);
+    })
+    .catch((err) =>{
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 // This shows the details for a movie based on the movie name
-app.get('/movies/:title', (req, res) => {
-  res.json(topMovies.find((movie) =>
-  { return movie.title === req.params.title }));
+app.get('/movies/:Title', (req, res) => {
+  Movies.findOne({Title: req.params.Title}) // This finds a movie by it's title in the request
+    .then((movie) => {
+      res.status(201).json(movie); //This sends back the movie object in JSON format
+    })
+    .catch((err) => { //Catches errors
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
+
 // This shows information about a specific genre(description) by name/title
-app.get('/movies/genres/:genre', (req, res) => {
-  res.send('This is where we will show more information about a specific genre');
+app.get('/genres/:Genre', (req, res) => {
+  Genres.findOne({Name: req.params.Genre}) //Finds the genre by name from the "Genres" collection in the database
+    .then((genre) => {
+      res.status(201).json(genre);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
 });
 
 // This shows information about a specific director by name
-app.get('/movies/directors/:director', (req, res) => {
-  res.send('This is where we will show more information about a specific Director');
+app.get('/directors/:Director', (req, res) => {
+  Directors.findOne({Name: req.params.Director}) //Finds the genre by name from the "Genres" collection in the database
+    .then((director) => {
+      res.status(201).json(director);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
+    });
+});
+
+// This shows more info about a specific user based on the username in the query
+app.get('/users/:Username', (req, res) => {
+  Users.findOne({Username: req.params.Username}) //This finds a user by their username that they put in the request
+  .then((user) => {
+    res.status(201).json(user); //This returns their info in JSON format
+  })
+  .catch((err) => { //This section catches any errors and sends back a message with an error code of '500'
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  });
 });
 
 // Registers a new user
@@ -96,7 +104,7 @@ app.post('/users', (req, res) => {
   Users.findOne({ Username: req.body.Username }) //This queries the "Users" model using mongoose
     .then((user) => {
       if (user) {
-        return res.status(400).send(req.body.Username = 'already exists'); //This returns the 'already exists' message if that username already exists
+        return res.status(400).send(req.body.Username = 'That username already exists. Try a different name.'); //This returns the 'already exists' message if that username already exists
       } else {
         Users.create({ //This section creates a new user profile based on the query and adds it to the Mongo Database
             Username: req.body.Username,
@@ -115,18 +123,6 @@ app.post('/users', (req, res) => {
       console.error(error);
       res.status(500).send('Error: ' + error);
     });
-});
-
-// This shows more info about a specific user based on the username in the query
-app.get('/users/:Username', (req, res) => {
-  Users.findOne({Username: req.params.Username}) //This finds a user by their username that they put in the request
-  .then((user) => {
-    res.json(user); //This returns their info in JSON format
-  })
-  .catch((err) => { //This section catches any errors and sends back a message with an error code of '500'
-    console.error(err);
-    res.status(500).send('Error: ' + err);
-  });
 });
 
 // This allows the user to update their info
@@ -182,7 +178,7 @@ app.delete('/users/:Username/movies/:MovieID', (req, res) => {
   });
 });
 
-// This deregisters the user
+// This deregisters the user and delets them from the database
 app.delete('/users/:Username', (req, res) => {
   Users.findOneAndRemove({Username: req.params.Username}) //This finds the user by username and removes them from the user group
     .then((user) =>{
