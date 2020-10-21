@@ -3,8 +3,10 @@ const express = require('express'),
   morgan = require('morgan'),
   bodyParser = require('body-parser'),
   uuid = require('uuid'),
-  passport = require('passport');
+  passport = require('passport'),
+  cors = require('cors');
   require('./passport');
+const {check, validationResult} = require('express-validator');
 
 
 // Imports the appropriate object models from Mongoose
@@ -22,6 +24,7 @@ mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, u
 const app = express();
 
 app.use(bodyParser.json()); // This is the bodyParser middleware function
+app.use(cors()); // Allows the use of CORS (Cross-Origin Resource Sharing)
 let auth = require('./auth')(app); // This imports my "auth.js" file, and the "(app)" part ensures that Express is available in the "auth.js" file as well
 
 //When the user enters a url into the browser this logs a timestamp and the pathName to the console/terminal
@@ -104,50 +107,78 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req
 });
 
 // Registers a new user
-app.post('/users', (req, res) => {
-  Users.findOne({ Username: req.body.Username }) //This queries the "Users" model using mongoose
-    .then((user) => {
-      if (user) {
-        return res.status(400).send(req.body.Username = 'That username already exists. Try a different name.'); //This returns the 'already exists' message if that username already exists
-      } else {
-        Users.create({ //This section creates a new user profile based on the query and adds it to the Mongo Database
-            Username: req.body.Username,
-            Password: req.body.Password,
-            Email: req.body.Email,
-            Birthday: req.body.Birthday
+app.post('/users',
+  [
+    check('Username', 'Username must be at least 5 characters').isLength({min: 5}), // The following lines use the "express validator" library which validates all kinds of input data
+    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Must be a valid Email').isEmail()
+  ], (req, res) => {
+
+    let errors = validationResult(req); // checks the validation object above for errors
+
+    if (!errors.isEmpty()) { // verifys that there weren't any errors with the inputs and returns a list of errors if there are
+      return res.status(422).json({errors: errors.array()});
+    }
+
+    let hashedPassword = Users.hashPassword(req.body.Password); //Hashes the password to store in the database
+    Users.findOne({ Username: req.body.Username }) //This queries the "Users" model using mongoose
+      .then((user) => {
+        if (user) {
+          return res.status(400).send(req.body.Username = 'That username already exists. Try a different name.'); //This returns the 'already exists' message if that username already exists
+        } else {
+          Users.create({ //This section creates a new user profile based on the query and adds it to the Mongo Database
+              Username: req.body.Username,
+              Password: hashedPassword,
+              Email: req.body.Email,
+              Birthday: req.body.Birthday
+            })
+            .then((user) => {res.status(201).json(user) }) //This sends the new user info back as a response in JSON format
+            .catch((error) => { //This section catches any errors and sends back a message with an error code of '500'
+            console.error(error);
+            res.status(500).send('Error: ' + error);
           })
-          .then((user) => {res.status(201).json(user) }) //This sends the new user info back as a response in JSON format
-        .catch((error) => { //This section catches any errors and sends back a message with an error code of '500'
-          console.error(error);
-          res.status(500).send('Error: ' + error);
-        })
-      }
-    })
-    .catch((error) => { //This section catches any errors and sends back a message with an error code of '500'
-      console.error(error);
-      res.status(500).send('Error: ' + error);
-    });
+        }
+      })
+      .catch((error) => { //This section catches any errors and sends back a message with an error code of '500'
+        console.error(error);
+        res.status(500).send('Error: ' + error);
+      });
 });
 
 // This allows the user to update their info
-app.put('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res) => {
-  Users.findOneAndUpdate({ Username: req.params.Username},{ $set: //This section finds a user in the database by name and updates their info
-    {
-      Username: req.body.Username,
-      Password: req.body.Password,
-      Email: req.body.Email,
-      Birthday: req.body.Birthday
-    }
-  },
-  {new: true}, //This line makes sure the updated document is returned
-  (err, updatedUser) => {
-    if (err){ //This will show an error if there is one
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    } else {
-      res.json(updatedUser); //this returns the JSON of the updated user info
-    }
-  });
+app.put('/users/:Username', passport.authenticate('jwt', {session: false}),
+  [
+      check('Username', 'Username must be at least 5 characters').isLength({min: 5}), // The following lines use the "express validator" library which validates all kinds of input data
+      check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+      check('Password', 'Password is required').not().isEmpty(),
+      check('Email', 'Must be a valid Email').isEmail()
+  ], (req, res) => {
+
+      let errors = validationResult(req); // checks the validation object above for errors
+
+      if (!errors.isEmpty()) { // verifys that there weren't any errors with the inputs and returns a list of errors if there are
+        return res.status(422).json({errors: errors.array()});
+      }
+
+      let hashedPassword = Users.hashPassword(req.body.Password); //Hashes the password to store in the database
+      Users.findOneAndUpdate({ Username: req.params.Username},{ $set: //This section finds a user in the database by name and updates their info
+        {
+          Username: req.body.Username,
+          Password: hashedPassword,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday
+        }
+      },
+      {new: true}, //This line makes sure the updated document is returned
+      (err, updatedUser) => {
+        if (err){ //This will show an error if there is one
+          console.error(err);
+          res.status(500).send('Error: ' + err);
+        } else {
+          res.json(updatedUser); //this returns the JSON of the updated user info
+        }
+      });
 });
 
 // This allows the user to add a movie to their list
@@ -199,6 +230,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', {session: false}), (
 });
 
 // listen for requests
-app.listen(8080, () => {
-  console.log('Your app is listening on port 8080');
+const port = process.env.PORT || 8080; //Looks for a pre-configured port number in the environment variable and if nothing is found sets the port to 8080
+app.listen(port, '0.0.0.0', () => {
+  console.log('Your app is listening on port' + port);
 });
