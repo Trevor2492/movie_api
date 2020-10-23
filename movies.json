@@ -1,0 +1,181 @@
+[{
+  "_id": {
+    "$oid": "5f87956cdc978ddf632cde3a"
+  },
+  "Title": "Ace Ventura: When Nature Calls",
+  "Description": "Ace Ventura, Pet Detective, returns from a spiritual quest to investigate the disappearance of a rare white bat, the sacred animal of a tribe in Africa.",
+  "Genre": {
+    "Name": "Comedy",
+    "Description": "Comedy film, A comedy film is a category of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect. Films in this style traditionally have a happy ending."
+  },
+  "Director": {
+    "Name": "Steve Oedekerk",
+    "Bio": "Steven Brent Oedekerk is an American comedian, director, editor, producer, screenwriter and actor. Oedekerk is best known for his collaborations with actor and comedian Jim Carrey and director Tom Shadyac, his series of Thumbmation shorts and his film Kung Pow!",
+    "Birth": "1961-11-27",
+    "Death": ""
+  },
+  "ImagePath": "https://upload.wikimedia.org/wikipedia/en/b/b9/AceVenturaWhenNatureCallsposter.jpg",
+  "Featured": true
+},{
+  "_id": {
+    "$oid": "5f87965adc978ddf632cde3b"
+  },
+  "Title": "Nacho Libre",
+  "Description": "Berated all his life by those around him, a monk follows his dream and dons a mask to moonlight as a Luchador (Mexican wrestler).",
+  "Genre": {
+    "Name": "Comedy",
+    "Description": "Comedy film, A comedy film is a category of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect. Films in this style traditionally have a happy ending."
+  },
+  "Director": {
+    "Name": "Jared Hess",
+    "Bio": "Jared Hess was born on July 18, 1979 in Glendale, Arizona, USA as Jared Lawrence Hess. He is a writer and producer, known for Napoleon Dynamite (2004), Gentlemen Broncos (2009) and Nacho Libre (2006). He is married to Jerusha Hess.",
+    "Birth": "1974-10-01",
+    "Death": ""
+  },
+  "ImagePath": "https://m.media-amazon.com/images/M/MV5BN2ZkNDgxMjMtZmRiYS00MzFkLTk5ZjgtZDJkZWMzYmUxYjg4XkEyXkFqcGdeQXVyNTIzOTk5ODM@._V1_.jpg",
+  "Featured": true
+},{
+  "_id": {
+    "$oid": "5f8797f0dc978ddf632cde3c"
+  },
+  "Title": "Kung Pow: Enter the Fist",
+  "Description": "A rough-around-the-edges martial arts master seeks revenge for his parent's death.",
+  "Genre": {
+    "Name": "Comedy",
+    "Description": "Comedy film, A comedy film is a category of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect. Films in this style traditionally have a happy ending."
+  },
+  "Director": {
+    "Name": "Steve Oedekerk",
+    "Bio": "Steven Brent Oedekerk is an American comedian, director, editor, producer, screenwriter and actor. Oedekerk is best known for his collaborations with actor and comedian Jim Carrey and director Tom Shadyac, his series of Thumbmation shorts and his film Kung Pow!",
+    "Birth": "1961-11-27",
+    "Death": ""
+  },
+  "ImagePath": "https://media2.fdncms.com/ntslo/imager/u/slideshow/2967035/film-guiltypleasures-enterthefist-4-21.jpg",
+  "Featured": true
+},{
+  "_id": {
+    "$oid": "5f8798b2dc978ddf632cde3d"
+  },
+  "Title": "Hot Rod",
+  "Description": "Self-proclaimed stuntman Rod Kimble is preparing for the jump of his life - to clear fifteen buses to raise money for his abusive stepfather Frank's life-saving heart operation.",
+  "Genre": {
+    "Name": "Comedy",
+    "Description": "Comedy film, A comedy film is a category of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect. Films in this style traditionally have a happy ending."
+  },
+  "Director": {
+    "Name": "Akiva Schaffer",
+    "Bio": "Akiva Schaffer was born on December 1, 1977 in Berkeley, California, USA as Akiva Daniel Schaffer. He is a writer and director, known for Popstar: Never Stop Never Stopping (2016), Saturday Night Live (1975) and The Lego Movie (2014).",
+    "Birth": "1977-12-01",
+    "Death": ""
+  },
+  "ImagePath": "https://m.media-amazon.com/images/M/MV5BNjYwNjA3OTY0Nl5BMl5BanBnXkFtZTcwNDMyNDUzMw@@._V1_.jpg",
+  "Featured": true
+},{
+  "_id": {
+    "$oid": "5f879947dc978ddf632cde3e"
+  },
+  "Title": "Zombieland",
+  "Description": "A shy student trying to reach his family in Ohio, a gun-toting tough guy trying to find the last Twinkie, and a pair of sisters trying to get to an amusement park join forces to travel across a zombie-filled America.",
+  "Genre": {
+    "Name": "Comedy",
+    "Description": "Comedy film, A comedy film is a category of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect. Films in this style traditionally have a happy ending."
+  },
+  "Director": {
+    "Name": "Ruben Fleischer",
+    "Bio": "Ruben Fleischer was born on October 31, 1974 in Washington, District of Columbia, USA as Ruben Samuel Fleischer. He is a producer and director, known for Jekyll.",
+    "Birth": "1974-10-01",
+    "Death": ""
+  },
+  "ImagePath": "https://www.sonypictures.com/sites/default/files/styles/max_560x840/public/chameleon/title-movie/230175_ZOMBIELAND%20%282009%29_1400x2100_English.jpg?itok=Dx4NdoPL",
+  "Featured": true
+},{
+  "_id": {
+    "$oid": "5f8799c4dc978ddf632cde3f"
+  },
+  "Title": "Scott Pilgrim vs. the World",
+  "Description": "Scott Pilgrim must defeat his new girlfriend's seven evil exes in order to win her heart.",
+  "Genre": {
+    "Name": "Comedy",
+    "Description": "Comedy film, A comedy film is a category of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect. Films in this style traditionally have a happy ending."
+  },
+  "Director": {
+    "Name": "Edgar Wright",
+    "Bio": "Edgar Howard Wright (born 18 April 1974) is an English director, screenwriter, producer, and actor. He is best known for his comedic Three Flavours Cornetto film trilogy consisting of Shaun of the Dead (2004), Hot Fuzz (2007), and The World's End (2013), made with recurrent collaborators Simon Pegg, Nira Park and Nick Frost.",
+    "Birth": "1974-04-18",
+    "Death": ""
+  },
+  "ImagePath": "https://m.media-amazon.com/images/M/MV5BMTkwNTczNTMyOF5BMl5BanBnXkFtZTcwNzUxOTUyMw@@._V1_.jpg",
+  "Featured": true
+},{
+  "_id": {
+    "$oid": "5f879a83dc978ddf632cde41"
+  },
+  "Title": "Thor: Ragnarok",
+  "Description": "Imprisoned on the planet Sakaar, Thor must race against time to return to Asgard and stop Ragnarök, the destruction of his world, at the hands of the powerful and ruthless villain Hela.",
+  "Genre": {
+    "Name": "Action",
+    "Description": "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats and frantic chases."
+  },
+  "Director": {
+    "Name": "Taika Waititi",
+    "Bio": "Taika Waititi, also known as Taika Cohen, hails from the Raukokore region of the East Coast of New Zealand, and is the son of Robin (Cohen), a teacher, and Taika Waiti, an artist and farmer.",
+    "Birth": "1975-08-16",
+    "Death": ""
+  },
+  "ImagePath": "https://m.media-amazon.com/images/M/MV5BMjMyNDkzMzI1OF5BMl5BanBnXkFtZTgwODcxODg5MjI@._V1_.jpg",
+  "Featured": true
+},{
+  "_id": {
+    "$oid": "5f879b41dc978ddf632cde42"
+  },
+  "Title": "Ford v. Ferrari",
+  "Description": "American car designer Carroll Shelby and driver Ken Miles battle corporate interference and the laws of physics to build a revolutionary race car for Ford in order to defeat Ferrari at the 24 Hours of Le Mans in 1966.",
+  "Genre": {
+    "Name": "Drama",
+    "Description": "In film and television, drama is a category of narrative fiction intended to be more serious than humorous in tone."
+  },
+  "Director": {
+    "Name": "James Mangold",
+    "Bio": "James Mangold is an American film and television director, screenwriter and producer. Films he has directed include Girl, Interrupted (1999), Walk the Line (2005), which he also co-wrote, the 2007 remake 3:10 to Yuma (2007), The Wolverine (2013), and Logan (2017).",
+    "Birth": "1963-12-16",
+    "Death": ""
+  },
+  "ImagePath": "https://lumiere-a.akamaihd.net/v1/images/image_a39a0e25.jpeg?region=0,0,800,1200",
+  "Featured": true
+},{
+  "_id": {
+    "$oid": "5f879bacdc978ddf632cde43"
+  },
+  "Title": "The Dark Knight",
+  "Description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+  "Genre": {
+    "Name": "Drama",
+    "Description": "In film and television, drama is a category of narrative fiction intended to be more serious than humorous in tone."
+  },
+  "Director": {
+    "Name": "Christopher Nolan",
+    "Bio": "This is Christopher Nolan's new Bio",
+    "Birth": "1970-07-30",
+    "Death": ""
+  },
+  "ImagePath": "https://images-na.ssl-images-amazon.com/images/I/91KkWf50SoL._SL1500_.jpg",
+  "Featured": true
+},{
+  "_id": {
+    "$oid": "5f879c32dc978ddf632cde44"
+  },
+  "Title": "Inception",
+  "Description": "This is the new description for Inception",
+  "Genre": {
+    "Name": "Action",
+    "Description": "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats and frantic chases."
+  },
+  "Director": {
+    "Name": "Christopher Nolan",
+    "Bio": "This is Christopher Nolan's new Bio",
+    "Birth": "1970-07-30",
+    "Death": ""
+  },
+  "ImagePath": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
+  "Featured": true
+}]

@@ -1,0 +1,59 @@
+[{
+  "_id": {
+    "$oid": "5f8dec9db77de454a99eed26"
+  },
+  "FavoriteMovies": [],
+  "Username": "Barack Obama",
+  "Password": "ObamaPassword",
+  "Email": "obamaemail@gmail.com",
+  "Birthday": {
+    "$date": {
+      "$numberLong": "-304887600000"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f879e36dc978ddf632cde46"
+  },
+  "Username": "Rod Kimble",
+  "Password": "MountainFace123",
+  "Email": "stuntit@gmail.com",
+  "Birthday": {
+    "$date": "1990-06-13T00:00:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5f87a169dc978ddf632cde49"
+  },
+  "Username": "Bill Ted",
+  "Password": "ExcellentAdventure",
+  "Email": "princesses@gmail.com",
+  "Birthday": {
+    "$date": "1980-06-13T00:00:00Z"
+  }
+},{
+  "_id": {
+    "$oid": "5f87a206dc978ddf632cde4a"
+  },
+  "Username": "Tony Stark",
+  "Password": "Avengers321",
+  "Email": "ironman@gmail.com",
+  "Birthday": {
+    "$date": {
+      "$numberLong": "-149385600000"
+    }
+  }
+},{
+  "_id": {
+    "$oid": "5f8f94d7f3a9e36c713cbf89"
+  },
+  "FavoriteMovies": [],
+  "Username": "Trevor Allen",
+  "Password": "newPassword",
+  "Email": "trevoremail@gmail.com",
+  "Birthday": {
+    "$date": "1992-06-06T00:00:00Z"
+  },
+  "__v": 0
+}]

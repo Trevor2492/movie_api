@@ -1,0 +1,67 @@
+[{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a63974b"
+  },
+  "Name": "Action",
+  "Description": "Action film is a film genre in which the protagonist or protagonists are thrust into a series of events that typically include violence, extended fighting, physical feats and frantic chases."
+},{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a63974c"
+  },
+  "Name": "Adventure",
+  "Description": "Adventure films are a genre of film whose plots feature elements of travel. They typically involve protagonists who must leave their home or place of comfort and go to far away lands to fulfill a goal. Settings play an important role in Adventure films, sometimes as big as the characters themselves."
+},{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a63974d"
+  },
+  "Name": "Sci-Fi",
+  "Description": "Science fiction (or sci-fi) is a film genre that uses speculative, fictional science-based depictions of phenomena that are not fully accepted by mainstream science, such as extraterrestrial lifeforms, alien worlds, extrasensory perception and time travel, along with futuristic elements such as spacecraft, robots, cyborgs, interstellar travel or other technologies."
+},{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a63974e"
+  },
+  "Name": "Thriller",
+  "Description": "Thriller film, also known as suspense film or suspense thriller, is a broad film genre that evokes excitement and suspense in the audience. The suspense element found in most films'' plots is particularly exploited by the filmmaker in this genre."
+},{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a63974f"
+  },
+  "Name": "Horror",
+  "Description": "A horror film is one that seeks to elicit fear in its audience, for entertainment purposes. Initially inspired by literature from authors such as Edgar Allan Poe, Bram Stoker, and Mary Shelley, horror has existed as a film genre for more than a century. The macabre and the supernatural are frequent themes."
+},{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a639750"
+  },
+  "Name": "Drama",
+  "Description": "In film and television, drama is a category of narrative fiction intended to be more serious than humorous in tone."
+},{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a639751"
+  },
+  "Name": "Animated",
+  "Description": "Animation is a method in which figures are manipulated to appear as moving images. In traditional animation, images are drawn or painted by hand on transparent celluloid sheets to be photographed and exhibited on film. Today, most animations are made with computer-generated imagery."
+},{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a639752"
+  },
+  "Name": "Musical",
+  "Description": "Musical film is a film genre in which songs by the characters are interwoven into the narrative, sometimes accompanied by dancing. The songs usually advance the plot or develop the film''s characters, but in some cases, they serve merely as breaks in the storyline, often as elaborate '\"production numbers.'\" "
+},{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a639753"
+  },
+  "Name": "War",
+  "Description": "War film is a film genre concerned with warfare, typically about naval, air, or land battles, with combat scenes central to the drama. It has been strongly associated with the 20th century. The fateful nature of battle scenes means that war films often end with them."
+},{
+  "_id": {
+    "$oid": "5f8dfc36fa0e80545a639754"
+  },
+  "Name": "Western",
+  "Description": "Western is a genre of fiction set primarily in the latter half of the 19th century in the Western United States, which is styled the '\"Old West'\". Its stories commonly center on the life of a nomadic cowboy or gunfighter armed with a revolver and a rifle who rides a horse."
+},{
+  "_id": {
+    "$oid": "5f8e0173fa0e80545a639755"
+  },
+  "Name": "Comedy",
+  "Description": "Comedy film, A comedy film is a category of film in which the main emphasis is on humor. These films are designed to make the audience laugh through amusement and most often work by exaggerating characteristics for humorous effect. Films in this style traditionally have a happy ending."
+}]

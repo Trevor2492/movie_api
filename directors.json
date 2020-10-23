@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "5f8e04f2fa0e80545a63975d"
+  },
+  "Name": "Christopher Nolan",
+  " Bio": "Christopher Edward Nolan CBE is a British-American film director, producer and screenwriter known for making personal, distinctive films within the Hollywood mainstream.",
+  " Birth": "1970-07-30",
+  " Death": ""
+},{
+  "_id": {
+    "$oid": "5f8e04f2fa0e80545a63975e"
+  },
+  "Name": "Jared Hess",
+  " Bio": "Jared Hess was born on July 18, 1979 in Glendale, Arizona, USA as Jared Lawrence Hess. He is a writer and producer, known for Napoleon Dynamite (2004), Gentlemen Broncos (2009) and Nacho Libre (2006). He is married to Jerusha Hess.",
+  " Birth": "1979-07-18",
+  " Death": ""
+},{
+  "_id": {
+    "$oid": "5f8e04f2fa0e80545a63975f"
+  },
+  "Name": "Steve Oedekerk",
+  " Bio": "Steven Brent Oedekerk is an American comedian, director, editor, producer, screenwriter and actor. Oedekerk is best known for his collaborations with actor and comedian Jim Carrey and director Tom Shadyac, his series of '\"Thumbmation'\" shorts and his film Kung Pow!",
+  " Birth": "1961-11-27",
+  " Death": ""
+},{
+  "_id": {
+    "$oid": "5f8e04f2fa0e80545a639760"
+  },
+  "Name": "Akiva Schaffer",
+  " Bio": "Akiva Schaffer was born on December 1, 1977 in Berkeley, California, USA as Akiva Daniel Schaffer. He is a writer and director, known for Popstar: Never Stop Never Stopping (2016), Saturday Night Live (1975) and The Lego Movie (2014).",
+  " Birth": "1977-12-01",
+  " Death": ""
+},{
+  "_id": {
+    "$oid": "5f8e04f2fa0e80545a639761"
+  },
+  "Name": "Ruben Fleischer",
+  " Bio": "Ruben Fleischer was born on October 31, 1974 in Washington, District of Columbia, USA as Ruben Samuel Fleischer. He is a producer and director, known for Jekyll.",
+  " Birth": "1974-10-01",
+  " Death": ""
+},{
+  "_id": {
+    "$oid": "5f8e04f2fa0e80545a639762"
+  },
+  "Name": "Edgar Wright",
+  " Bio": "Edgar Howard Wright (born 18 April 1974) is an English director, screenwriter, producer, and actor. He is best known for his comedic Three Flavours Cornetto film trilogy consisting of Shaun of the Dead (2004), Hot Fuzz (2007), and The World''s End (2013), made with recurrent collaborators Simon Pegg, Nira Park and Nick Frost.",
+  " Birth": "1974-04-18",
+  " Death": ""
+},{
+  "_id": {
+    "$oid": "5f8e04f2fa0e80545a639763"
+  },
+  "Name": "Taika Waititi",
+  " Bio": "Taika Waititi, also known as Taika Cohen, hails from the Raukokore region of the East Coast of New Zealand, and is the son of Robin (Cohen), a teacher, and Taika Waiti, an artist and farmer.",
+  " Birth": "1975-08-16",
+  " Death": ""
+},{
+  "_id": {
+    "$oid": "5f8e04f2fa0e80545a639764"
+  },
+  "Name": "James Mangold",
+  " Bio": "James Mangold is an American film and television director, screenwriter and producer. Films he has directed include Girl, Interrupted (1999), Walk the Line (2005), which he also co-wrote, the 2007 remake 3:10 to Yuma (2007), The Wolverine (2013), and Logan (2017).",
+  " Birth": "1963-12-16",
+  " Death": ""
+}]
