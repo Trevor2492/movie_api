@@ -19,7 +19,7 @@ const Directors = Models.Director;
 
 //Connects the MongoDB database for use here
 // mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true}); // This is the local database on my computer
-mongoose.connect('process.env.CONNECTION_URI', {useNewUrlParser: true, useUnifiedTopology: true}); // This is the database hosted on MongoDB Atlas
+mongoose.connect('mongodb+srv://trevor2492:Password1!@cluster0.em3hj.mongodb.net/myFlixDB?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true}); // This is the database hosted on MongoDB Atlas
 
 //Allows the use of express
 const app = express();
