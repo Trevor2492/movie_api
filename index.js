@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
 });
 
 // This shows a list of all the movie objects
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
@@ -111,7 +111,7 @@ app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req
 app.post('/users',
   [
     check('Username', 'Username must be at least 5 characters').isLength({min: 5}), // The following lines use the "express validator" library which validates all kinds of input data
-    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('Username', 'Username contains non alphanumeric characters - not allowed. (i.e. no spaces)').isAlphanumeric(),
     check('Password', 'Password is required').not().isEmpty(),
     check('Email', 'Must be a valid Email').isEmail()
   ], (req, res) => {
