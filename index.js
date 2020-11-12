@@ -96,7 +96,7 @@ app.get('/directors/:Director', passport.authenticate('jwt', {session: false}), 
 });
 
 // This shows more info about a specific user based on the username in the query
-app.get('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res) => {
+app.get('/users/:Username'), (req, res) => {
   Users.findOne({Username: req.params.Username}) //This finds a user by their username that they put in the request
   .then((user) => {
     res.status(201).json(user); //This returns their info in JSON format
