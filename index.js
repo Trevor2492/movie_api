@@ -26,7 +26,7 @@ const Directors = Models.Director;
  *  
  */
 mongoose.connect(process.env.CONNECTION_URI, {useNewUrlParser: true, useUnifiedTopology: true}); // This is the database hosted on MongoDB Atlas
-mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true}); // This is the local database on my machine
+// mongoose.connect('mongodb://localhost:27017/myFlixDB', {useNewUrlParser: true, useUnifiedTopology: true}); // This is the local database on my machine
 
 /**
  * Allows the use of express
